@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package>
+  <name>nlopt_vendor</name>
+  <version>2.7.1</version>
+  <description>nlopt_vendor</description>
+  <maintainer email="schneith@ethz.ch">Thomas Schneider</maintainer>
+  <author>ASL</author>
+  <license>New BSD</license>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

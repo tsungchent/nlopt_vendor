@@ -1,0 +1,17 @@
+# Append cmake modules from source directory to the cmake module path
+list(APPEND CMAKE_MODULE_PATH @CMAKE_CURRENT_SOURCE_DIR@/cmake/Modules)
+find_package(NLopt QUIET)
+
+if(NOT NLopt_FOUND)
+  # add the local Modules directory to the modules path
+  set(NLopt_DIR "${@PROJECT_NAME@_DIR}/../../../lib/cmake/nlopt")
+  message(STATUS "Setting NLopt_DIR to: '${NLopt_DIR}'")
+  find_package(NLopt CONFIG REQUIRED QUIET)
+  set(@PROJECT_NAME@_LIBRARIES ${NLOPT_INCLUDE_DIRS})
+  set(@PROJECT_NAME@_INCLUDE_DIRS ${NLOPT_LIBRARY_DIRS})
+else()
+  set(@PROJECT_NAME@_LIBRARIES ${NLOPT_INCLUDE_DIRS})
+  set(@PROJECT_NAME@_INCLUDE_DIRS ${NLOPT_LIBRARY_DIRS})
+endif()
+
+list(APPEND @PROJECT_NAME@_TARGETS NLopt::nlopt)
